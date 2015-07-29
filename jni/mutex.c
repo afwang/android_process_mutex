@@ -50,7 +50,8 @@ JNIEXPORT void JNICALL Java_eu_codlab_sharedmutex_Mutex_configure(JNIEnv* env, j
 }
 
 JNIEXPORT void JNICALL Java_eu_codlab_sharedmutex_Mutex_lock(JNIEnv* env, jclass clazz) {
-    pthread_mutex_lock(semaphor);
+    int ret = pthread_mutex_lock(semaphor);
+	 __android_log_print(ANDROID_LOG_DEBUG, "Mutex jni", "Return value from lock call: %d", ret);
 }
 
 JNIEXPORT void JNICALL Java_eu_codlab_sharedmutex_Mutex_unlock(JNIEnv* env, jclass clazz) {
